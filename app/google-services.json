@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230111658862",
+    "project_id": "kgwd-diary-970b4",
+    "storage_bucket": "kgwd-diary-970b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230111658862:android:6388ebe8f548432832377f",
+        "android_client_info": {
+          "package_name": "com.example.kgwd_diary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_FB5RJY9AqJDeqoecqSHy8qrcGD3VmLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
