@@ -6,4 +6,6 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="login">Log In</string>
+    <string name="dearBrand">DEAR</string>
+    <string name="diaryBrand">DIARY</string>
 </resources>

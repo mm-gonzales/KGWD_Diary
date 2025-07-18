@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:width="130dp"
+        android:background="@drawable/input_text_radius"
         android:backgroundTint="@color/purple_200"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDiary" />
 
@@ -28,11 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:width="130dp"
+        android:background="@drawable/input_text_radius"
         android:backgroundTint="@color/lightgray"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/signup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
@@ -42,7 +42,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/poppins_extrabold"
-        android:text="@string/dear"
+        android:text="@string/dearBrand"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,10 +65,11 @@
         android:layout_height="90dp"
         android:layout_marginTop="-10dp"
         android:fontFamily="@font/poppins_extrabold"
-        android:text="@string/diary"
+        android:text="@string/diaryBrand"
         android:textColor="@color/white"
         android:textSize="66.5sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDear" />
 </androidx.constraintlayout.widget.ConstraintLayout>
