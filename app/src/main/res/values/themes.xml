@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.KGWDDiary" parent="Theme.Material3.DayNight.NoActionBar">
 
-    <style name="Theme.KGWD_Diary" parent="android:Theme.Material.Light.NoActionBar" />
+    </style>
 </resources>
+
