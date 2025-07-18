@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">KGWD_Diary</string>
+    <string name="login">Log In</string>
     <string name="signup">Sign Up</string>
-    <string name="username">Username</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="dear">DEAR</string>
+    <string name="diary">DIARY</string>
 </resources>
