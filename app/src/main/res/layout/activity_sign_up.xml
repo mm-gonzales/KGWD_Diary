@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp"
-    android:background="@drawable/mydiary_backgroud">
+    android:background="@drawable/mydiary_backgroud"
+    tools:context=".SignUp">
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -28,15 +28,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="50dp"
+        android:background="@drawable/input_text_radius"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="@string/username"
+        android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSignUp"
-        android:background="@drawable/input_text_radius"
-        android:padding="7dp"
-        android:backgroundTint="@color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -45,14 +45,14 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:background="@drawable/input_text_radius"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="@string/email"
+        android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername"
-        android:background="@drawable/input_text_radius"
-        android:padding="7dp"
-        android:backgroundTint="@color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -61,14 +61,14 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:background="@drawable/input_text_radius"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="@string/password"
+        android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"
-        android:background="@drawable/input_text_radius"
-        android:padding="7dp"
-        android:backgroundTint="@color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <EditText
         android:id="@+id/etConfirmPassword"
@@ -77,25 +77,37 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:background="@drawable/input_text_radius"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="@string/confirm_password"
+        android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        android:background="@drawable/input_text_radius"
-        android:padding="7dp"
-        android:backgroundTint="@color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="92dp"
         android:text="@string/signup"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBack"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnSignUp"
+        app:layout_constraintTop_toTopOf="@+id/btnSignUp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
