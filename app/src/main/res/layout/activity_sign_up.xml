@@ -15,7 +15,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/signup"
+        android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +33,7 @@
         android:background="@drawable/input_text_radius"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="@font/poppins"
         android:hint="@string/username"
         android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +51,7 @@
         android:background="@drawable/input_text_radius"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="@font/poppins"
         android:hint="@string/email"
         android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,6 +68,7 @@
         android:background="@drawable/input_text_radius"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="@font/poppins"
         android:hint="@string/password"
         android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,6 +85,7 @@
         android:background="@drawable/input_text_radius"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="@font/poppins"
         android:hint="@string/confirm_password"
         android:padding="7dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,30 +93,37 @@
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSignUp1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:width="113dp"
+        android:width="130dp"
+        android:background="@drawable/input_text_radius"
+        android:backgroundTint="@color/purple_200"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/signup"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnBackSignUp"
+        app:layout_constraintTop_toTopOf="@+id/btnBackSignUp" />
 
     <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnBackSignUp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:width="113dp"
+        android:layout_marginTop="100dp"
+        android:width="130dp"
+        android:background="@drawable/input_text_radius"
+        android:backgroundTint="@color/lightgray"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/back"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSignUp1"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
