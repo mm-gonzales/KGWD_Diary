@@ -33,7 +33,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSignUp"
+        android:background="@drawable/input_text_radius"
+        android:padding="7dp"
+        android:backgroundTint="@color/white"/>
 
     <EditText
         android:id="@+id/etEmail"
@@ -46,7 +49,10 @@
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
+        android:background="@drawable/input_text_radius"
+        android:padding="7dp"
+        android:backgroundTint="@color/white"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -59,7 +65,10 @@
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        android:background="@drawable/input_text_radius"
+        android:padding="7dp"
+        android:backgroundTint="@color/white"/>
 
     <EditText
         android:id="@+id/etConfirmPassword"
@@ -72,7 +81,10 @@
         android:hint="@string/confirm_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        android:background="@drawable/input_text_radius"
+        android:padding="7dp"
+        android:backgroundTint="@color/white"/>
 
     <Button
         android:id="@+id/btnSignUp"
