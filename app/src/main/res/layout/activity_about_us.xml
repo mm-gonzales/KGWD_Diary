@@ -35,7 +35,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/your_photo_1"
+                android:src="@drawable/mydiary_logo"
                 android:layout_marginEnd="16dp"
                 android:scaleType="centerCrop"
                 android:backgroundTint="@color/white" />
