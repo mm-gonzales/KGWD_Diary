@@ -9,6 +9,12 @@ android {
     namespace = "com.example.kgwd_diary"
     compileSdk = 35
 
+    // Enable view binding
+    buildFeatures{
+        viewBinding = true
+        compose = true
+    }
+
     defaultConfig {
         applicationId = "com.example.kgwd_diary"
         minSdk = 29
