@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,21 +12,26 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MyDiary : AppCompatActivity() {
 
     private lateinit var diaryRecyclerView: RecyclerView
     private lateinit var diaryAdapter: DiaryAdapter
-    private val diaryList = listOf(
-        DiaryEntry("First Entry", "Today I started building a diary app."),
-        DiaryEntry("Second Entry", "Learning RecyclerView was easier than I thought!"),
-        DiaryEntry("Third Entry", "I'll add Firebase soon.")
-    )
+    private val diaryList = mutableListOf<DiaryEntry>()
+
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_my_diary)
+
+        // Initialize Firebase
+        firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
 
         // Toolbar setup
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.myToolbar)
@@ -38,6 +44,9 @@ class MyDiary : AppCompatActivity() {
         diaryRecyclerView.layoutManager = LinearLayoutManager(this)
         diaryAdapter = DiaryAdapter(diaryList)
         diaryRecyclerView.adapter = diaryAdapter
+
+        // Load Diary Entries
+        loadDiaryEntries()
 
         // Insets handling
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -52,6 +61,31 @@ class MyDiary : AppCompatActivity() {
             val intent = Intent(this, NewEntry::class.java)
             startActivity(intent)
         }
+    }
+
+    // Load diary entries from Firestore
+    private fun loadDiaryEntries() {
+        val userEmail = auth.currentUser?.email
+
+        if (userEmail == null) {
+            Toast.makeText(this, "User not logged in.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        firestore.collection("diaryEntries")
+            .whereEqualTo("email", userEmail)
+            .get()
+            .addOnSuccessListener { result ->
+                diaryList.clear()
+                for (document in result) {
+                    val entry = document.toObject(DiaryEntry::class.java)
+                    diaryList.add(entry)
+                }
+                diaryAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "Failed to load diary entries.", Toast.LENGTH_SHORT).show()
+            }
     }
 
     // Inflate the 3-dot menu
