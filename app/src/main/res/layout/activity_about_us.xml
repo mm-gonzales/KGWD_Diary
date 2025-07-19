@@ -8,6 +8,18 @@
     android:background="@drawable/mydiary_backgroud"
     tools:context=".AboutUs">
 
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <TextView
         android:id="@+id/tvAboutUs"
         android:layout_width="wrap_content"

@@ -28,7 +28,7 @@ class FirstScreen : AppCompatActivity() {
         //Create an action listener
         btnLogin.setOnClickListener {
             // Declare an intent object
-            val intent = Intent(this, LogIn::class.java)
+            val intent = Intent(this, MyDiary::class.java)
             startActivity(intent)
         }
 
