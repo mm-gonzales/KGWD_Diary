@@ -14,4 +14,11 @@
     <string name="write_diary">Write your Diary...</string>
     <string name="save_entry">Save Entry</string>
     <string name="my_diary">My Diary</string>
+    <string name="about_us">About Us</string>
+    <string name="mica_name">Michaela Gonzales</string>
+    <string name="alex_name">Alexa Gagan</string>
+    <string name="shane_name">Shane Oxina</string>
+    <string name="alex_desc">Lead Developer</string>
+    <string name="mica_desc">Backend Developer</string>
+    <string name="shane_desc">Frontend Developer</string>
 </resources>
