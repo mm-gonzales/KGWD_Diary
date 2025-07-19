@@ -9,4 +9,9 @@
     <string name="dearBrand">DEAR</string>
     <string name="diaryBrand">DIARY</string>
     <string name="back">Back</string>
+    <string name="new_entry">New Entry</string>
+    <string name="title">Title</string>
+    <string name="write_diary">Write your Diary...</string>
+    <string name="save_entry">Save Entry</string>
+    <string name="my_diary">My Diary</string>
 </resources>
