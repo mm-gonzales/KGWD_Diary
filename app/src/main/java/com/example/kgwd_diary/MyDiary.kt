@@ -42,7 +42,23 @@ class MyDiary : AppCompatActivity() {
         // RecyclerView setup
         diaryRecyclerView = findViewById(R.id.recyclerView)
         diaryRecyclerView.layoutManager = LinearLayoutManager(this)
-        diaryAdapter = DiaryAdapter(diaryList)
+
+        // Adapter with both delete and item click
+        diaryAdapter = DiaryAdapter(
+            diaryList,
+            onDeleteClick = { entry ->
+                deleteDiaryEntry(entry)
+            },
+            onItemClick = { entry ->
+                val intent = Intent(this, NewEntry::class.java).apply {
+                    putExtra("ENTRY_ID", entry.id)
+                    putExtra("TITLE", entry.title)
+                    putExtra("CONTENT", entry.content)
+                }
+                startActivity(intent)
+            }
+        )
+
         diaryRecyclerView.adapter = diaryAdapter
 
         // Load Diary Entries
@@ -79,12 +95,26 @@ class MyDiary : AppCompatActivity() {
                 diaryList.clear()
                 for (document in result) {
                     val entry = document.toObject(DiaryEntry::class.java)
+                    entry.id = document.id
                     diaryList.add(entry)
                 }
                 diaryAdapter.notifyDataSetChanged()
             }
-            .addOnFailureListener { exception ->
+            .addOnFailureListener {
                 Toast.makeText(this, "Failed to load diary entries.", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    // Delete entry from Firestore
+    private fun deleteDiaryEntry(entry: DiaryEntry) {
+        firestore.collection("diaryEntries").document(entry.id)
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Entry deleted.", Toast.LENGTH_SHORT).show()
+                loadDiaryEntries()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to delete entry.", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -102,7 +132,6 @@ class MyDiary : AppCompatActivity() {
                 true
             }
             R.id.action_sign_out -> {
-                // Handle sign out logic here
                 startActivity(Intent(this, FirstScreen::class.java))
                 finish()
                 true

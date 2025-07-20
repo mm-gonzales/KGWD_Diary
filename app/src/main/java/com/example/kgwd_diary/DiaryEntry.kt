@@ -1,8 +1,10 @@
 package com.example.kgwd_diary
 
 data class DiaryEntry(
-    var title: String = "",
-    var content: String = "",
-    var email: String = ""
+    val title: String = "",
+    val content: String = "",
+    val email: String = "",
+    var id: String = "" // for deletion
 )
+
 

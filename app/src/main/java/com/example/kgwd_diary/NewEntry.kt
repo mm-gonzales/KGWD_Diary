@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,37 +19,52 @@ class NewEntry : AppCompatActivity() {
     private lateinit var etTitle: EditText
     private lateinit var etContent: EditText
     private lateinit var btnSaveEntry: Button
+    private lateinit var titleTextView: TextView
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+
+    private var entryId: String? = null  // Will hold the document ID if updating
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_entry)
 
-        // Firebase setup
+        // Firebase
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        // UI components
+        // UI
         etTitle = findViewById(R.id.etTitle)
         etContent = findViewById(R.id.etContent)
         btnSaveEntry = findViewById(R.id.btnSaveEntry)
+        titleTextView = findViewById(R.id.tvNewEntry)
 
-        // ✅ Set up the toolbar
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.myToolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        // Insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Save Entry logic
+        // Check if we're editing an entry
+        entryId = intent.getStringExtra("ENTRY_ID")
+        val titleExtra = intent.getStringExtra("TITLE")
+        val contentExtra = intent.getStringExtra("CONTENT")
+
+        if (entryId != null) {
+            etTitle.setText(titleExtra)
+            etContent.setText(contentExtra)
+            btnSaveEntry.text = "Update Entry"
+            titleTextView.text = "Diary Entry" // Show 'Edit' title
+        } else {
+            titleTextView.text = "New Entry" // Default title
+        }
+
         btnSaveEntry.setOnClickListener {
             val title = etTitle.text.toString().trim()
             val content = etContent.text.toString().trim()
@@ -64,22 +80,38 @@ class NewEntry : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val newEntry = hashMapOf(
+            val entry = hashMapOf(
                 "title" to title,
                 "content" to content,
                 "email" to email
             )
 
-            firestore.collection("diaryEntries")
-                .add(newEntry)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Entry saved!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MyDiary::class.java))
-                    finish()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Failed to save entry", Toast.LENGTH_SHORT).show()
-                }
+            if (entryId != null) {
+                // Update existing entry
+                firestore.collection("diaryEntries")
+                    .document(entryId!!)
+                    .set(entry)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Entry updated!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, MyDiary::class.java))
+                        finish()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Failed to update entry", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                // Add new entry
+                firestore.collection("diaryEntries")
+                    .add(entry)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Entry saved!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, MyDiary::class.java))
+                        finish()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Failed to save entry", Toast.LENGTH_SHORT).show()
+                    }
+            }
         }
     }
 
@@ -91,7 +123,6 @@ class NewEntry : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                // Back button action
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
